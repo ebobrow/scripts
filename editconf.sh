@@ -5,7 +5,7 @@ declare -a options=(
 "fish - $HOME/.config/fish/config.fish"
 "neovim - $HOME/.config/nvim/init.vim"
 "vim - $HOME/.vimrc"
-"qtile - $HOME/.config/qtile"
+"qtile - $HOME/.config/qtile/config.py"
 "xresources - $HOME/.Xresources"
 "dunst - $HOME/.config/dunst/dunstrc"
 "lf - $HOME/.config/lf/lfrc"
@@ -19,7 +19,7 @@ if [[ "$choice" == "quit" ]]; then
 
 elif [ "$choice" ]; then
 	cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
-	nvim "$cfg"
+	nvim "$cfg"	-c "cd %:p:h"
 
 else
 	echo "Program terminated" && exit 1
