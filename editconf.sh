@@ -8,6 +8,7 @@ declare -a options=(
 "qtile - $HOME/.config/qtile"
 "xresources - $HOME/.Xresources"
 "dunst - $HOME/.config/dunst/dunstrc"
+"lf - $HOME/.config/lf/lfrc"
 "quit"
 )
 
