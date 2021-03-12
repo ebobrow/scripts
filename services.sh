@@ -1,9 +1,5 @@
 #!/bin/bash
 
-function check_active {
-	return $(systemctl is-active $1)
-}
-
 service_names=(
 "postgresql.service"
 "bluetooth.service"
@@ -21,7 +17,7 @@ choice=$(printf '%s\n' "${services[@]}" | dmenu -h 25 -fn 'mononoki Nerd Font:st
 if [[ "$choice" ]]; then
 	service=$(echo $choice | awk '{print $1}')
 	active=$(echo $choice | awk '{print $2}')
-	echo $active
+
 	if [[ "$active" == "(active)" ]]; then
 		systemctl stop "$service"
 
