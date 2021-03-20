@@ -1,14 +1,14 @@
 #!/bin/bash
 
-declare -a options=(
-"alacritty - $HOME/.config/alacritty/alacritty.yml"
-"fish - $HOME/.config/fish/config.fish"
-"neovim - $HOME/.config/nvim/init.vim"
+options=(
+"alacritty - $HOME/.config/alacritty alacritty.yml"
+"fish - $HOME/.config/fish config.fish"
+"neovim - $HOME/.config/nvim ."
 "vim - $HOME/.vimrc"
-"qtile - $HOME/.config/qtile/config.py"
-"xresources - $HOME/.Xresources"
-"dunst - $HOME/.config/dunst/dunstrc"
-"lf - $HOME/.config/lf/lfrc"
+"qtile - $HOME/.config/qtile ."
+"xresources - $HOME .Xresources"
+"dunst - $HOME/.config/dunst dunstrc"
+"lf - $HOME/.config/lf lfrc"
 "quit"
 )
 
@@ -18,8 +18,10 @@ if [[ "$choice" == "quit" ]]; then
 	echo "Program terminated" && exit 1
 
 elif [ "$choice" ]; then
-	cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
-	nvim "$cfg"	-c "cd %:p:h"
+	path=$(printf '%s\n' "${choice}" | awk '{print $3}')
+	file=$(printf '%s\n' "${choice}" | awk '{print $NF}')
+	cd "$path"
+	nvim "$file"
 
 else
 	echo "Program terminated" && exit 1
