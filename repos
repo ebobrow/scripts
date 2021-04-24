@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd repos
+choice=$(find -maxdepth 1 | fzf)
+nvim "$choice"

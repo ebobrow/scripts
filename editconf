@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd ~/.config
+choice=$(fzf)
+nvim "$choice"

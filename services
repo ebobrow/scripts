@@ -1,9 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
 service_names=(
 "postgresql.service"
 "bluetooth.service"
-"dhcpcd.service"
 )
 declare -a services
 

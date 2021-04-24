@@ -1,0 +1,64 @@
+#!/bin/sh
+
+urlencodepipe() {
+  local LANG=C; local c; while IFS= read -r c; do
+    case $c in [a-zA-Z0-9.~_-]) printf "$c"; continue ;; esac
+    printf "$c" | od -An -tx1 | tr ' ' % | tr -d '\n'
+  done <<EOF
+$(fold -w1)
+EOF
+  echo
+}
+
+options=(
+"Github https://github.com"
+"Arch wiki https://wiki.archlinux.org"
+"Search"
+"Bookmarks"
+)
+
+choice=$(printf '%s\n' "${options[@]}" | dmenu -h 25 -fn 'mononoki Nerd Font:style=Bold' -i -l 20 -p 'Open page:' | awk '{print $NF}')
+
+case $choice in
+	'https://wiki.archlinux.org')
+		query=$(echo "" | dmenu -h 25 -fn 'mononoki Nerd Font:style=Bold' -p 'Search for:')
+
+		if [ "$query" ]; then
+			$BROWSER --new-tab "https://wiki.archlinux.org/index.php?search=""$query"
+
+		else
+			exit 1
+		fi
+		;;
+
+	'Search')
+		query=$(echo "" | dmenu -h 25 -fn 'mononoki Nerd Font:style=Bold' -p 'Search for:' | urlencodepipe)
+
+		if [ "$query" ]; then
+			brave --new-tab "https://duckduckgo.com/?q=""$query"
+
+		else
+			exit 1
+		fi
+		;;
+
+	'Bookmarks')
+		page=$(cat ~/firefoxbookmarks | dmenu -h 25 -fn 'mononoki Nerd Font:style=Bold' -i -l 20 -p 'Open bookmark:' | awk '{print $NF}')
+		if [ "$page" ]; then
+			brave --new-tab "$page"
+
+		else
+			exit 1
+		fi
+		;;
+
+	*)
+		if [ "$choice" ]; then
+			brave --new-tab "$choice"
+
+		else
+			exit 1
+		fi
+		;;
+esac
+
