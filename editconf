@@ -1,5 +1,5 @@
 #!/bin/sh
 
 cd ~/.config
-choice=$(fzf)
+choice=$(find -maxdepth 1 | fzf)
 nvim "$choice"
