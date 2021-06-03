@@ -1,0 +1,4 @@
+#!/bin/sh
+
+choice=$(ls ~/.config/tmuxinator | sed "s/\.yml//" | fzf)
+tmuxinator start "$choice"

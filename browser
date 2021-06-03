@@ -17,7 +17,7 @@ options=(
 "Bookmarks"
 )
 
-choice=$(printf '%s\n' "${options[@]}" | dmenu -h 25 -fn 'mononoki Nerd Font:style=Bold' -i -l 20 -p 'Open page:' | awk '{print $NF}')
+choice=$(printf '%s\n' "${options[@]}" | dmenu -h 25 -i -l 20 -p 'Open page:' | awk '{print $NF}')
 
 case $choice in
 	'https://wiki.archlinux.org')

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-length=$(echo "" | dmenu -h 25 -fn "mononoki Nerd Font:style=Bold" -i -p 'Length:')
+length=$(echo "" | dmenu -h 25 -i -p 'Length:')
 sleep $length
 
 notify-send "$length"" second alarm done"
