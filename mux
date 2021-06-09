@@ -1,0 +1,4 @@
+#!/bin/sh
+
+choice=$(tmux ls | fzf | cut -d ":" -f 1)
+tmux a -t "$choice"
