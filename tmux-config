@@ -5,7 +5,7 @@ if [[ $? -eq 0 ]]; then
     exit 0
 fi
 
-tmux new-session -c ~/.config -d -s config -n config nvim && tmux switch-client -t config
+tmux new-session -c ~/.config -d -s config -n config && tmux switch-client -t config
 tmux neww -n zsh -c ~ nvim .zshrc
 tmux neww -n tmux -c ~ nvim ~/.tmux.conf
 tmux neww -n xmonad -c ~/.xmonad nvim xmonad.hs
