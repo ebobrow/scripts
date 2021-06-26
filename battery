@@ -8,5 +8,5 @@ do
     elif [ $battery_level -le 20 ]; then
         notify-send --urgency=CRITICAL "Battery Low" "Level: ${battery_level}%"
     fi
-    sleep 60
+    sleep 120
 done
