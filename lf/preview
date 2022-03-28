@@ -1,7 +1,0 @@
-#!/bin/sh
-
-case "$1" in
-	*.pdf) pdftotext "$1" -;;
-	# *) highlight -o ansi "$1" || cat "$1";;
-	*) bat "$1";;
-esac

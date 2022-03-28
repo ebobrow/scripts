@@ -1,8 +1,0 @@
-#!/bin/sh
-
-action=$(dunstify --action="view,View" "Qtile error")
-
-case $action in
-	'view')
-		alacritty -e vim -R + ~/.local/share/qtile/qtile.log
-esac

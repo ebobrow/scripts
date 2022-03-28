@@ -1,8 +1,0 @@
-#!/bin/sh
-
-cupd=$(checkupdates | wc -l)
-if [[ "$cupd" == 1 ]]; then
-    echo "$cupd update"
-else
-    echo "$cupd updates"
-fi

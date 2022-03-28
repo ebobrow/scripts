@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while true; do
+    batterycharge=$(cat /sys/class/power_supply/BAT0/capacity)
+    # batterystatus="C" && [[ $(cat /sys/class/power_supply/BAT0/status) == "Discharging" ]] && batterystatuschar="D"
+    batterystatus=$(cat /sys/class/power_supply/BAT0/status)
+    # Network?
+    xsetroot -name " $(cat /home/elliotbobrow/scripts/reminder.txt) | $batterystatus $batterycharge% | $(date +'%a %b %_d - %I:%M:%S %p')"
+    sleep 1
+done
