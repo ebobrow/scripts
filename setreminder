@@ -1,3 +1,0 @@
-#!/bin/bash
-
-echo "$(cat /home/elliotbobrow/scripts/reminder.txt | dmenu)" > /home/elliotbobrow/scripts/reminder.txt
