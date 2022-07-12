@@ -1,0 +1,12 @@
+#!/bin/sh
+
+cmd=$(echo "" | dmenu -p "Math:")
+[ -z "$cmd" ] && exit
+result=$(python -c "print($cmd)")
+
+while :
+do
+    cmd=$(echo "" | dmenu -p "$result:")
+    [ -z "$cmd" ] && exit
+    result=$(python -c "print($cmd)")
+done
