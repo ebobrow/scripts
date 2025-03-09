@@ -1,0 +1,29 @@
+#!/bin/sh
+
+cwd=$(pwd)
+
+# inotifywait -mr \
+#   --timefmt '%d/%m/%y %H:%M' --format '%T %w %f' \
+#   -e close_write reversibobr |
+# while read -r date time dir file; do
+#        changed_abs=${dir}${file}
+#        changed_rel=${changed_abs#"$cwd"/}
+
+#        # rsync --progress --relative -vrae 'ssh -p 22' "$changed_rel" \
+#        #     usernam@example.com:/backup/root/dir && \
+#        scp "$changed_rel" ebobrow@1.studio.boardgamearena.com:reversibobr \
+#        echo "At ${time} on ${date}, file $changed_abs was backed up via rsync" >&2
+# done
+
+# inotifywait      \
+#   --quiet        \
+#   --format '%f'  \
+#   --monitor reversibobr |
+#   while read FILE; do \
+#       echo $FILE;
+#       # scp reversibobr/$FILE ebobrow@1.studio.boardgamearena.com:reversibobr;
+#   done
+inotifywait -rm --format "%w %f" -e modify -e create -e delete $1 |
+    while read -r dir file; do \
+        scp "$dir/$file" ebobrow@1.studio.boardgamearena.com:"$dir";
+    done

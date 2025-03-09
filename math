@@ -3,10 +3,12 @@
 cmd=$(echo "" | dmenu -p "Math:")
 [ -z "$cmd" ] && exit
 result=$(python -c "print($cmd)")
+echo "$result" | xsel -b --trim
 
 while :
 do
     cmd=$(echo "" | dmenu -p "$result:")
     [ -z "$cmd" ] && exit
     result=$(python -c "print($cmd)")
+    echo "$result" | xsel -b --trim
 done
