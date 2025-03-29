@@ -2,9 +2,9 @@
 
 old=$(cat /sys/class/backlight/intel_backlight/brightness)
 if [[ "$1" = "inc" ]]; then
-    new=$(expr $old + 5000)
+    new=$(expr $old + 4800)
     echo "$new" > /sys/class/backlight/intel_backlight/brightness
 else
-    new=$(expr $old - 5000)
+    new=$(expr $old - 4800)
     echo "$new" > /sys/class/backlight/intel_backlight/brightness
 fi

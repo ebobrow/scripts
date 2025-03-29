@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd $(ls | dmenu -l 10 -p "Dir: ")
+cd $(ls | rofi -dmenu -l 10 -p "Dir")
 num=$(echo */ | grep -o '[0-9]\+' | awk '$0>x{x=$0};END{print x}')
 cd "hw$num"
 nvim main.tex +'call ZathuraOpenPdf()'
